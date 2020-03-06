@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+# termite
+# termite &
+
+# st
+# st &
+
+# alaritty
+alacritty &

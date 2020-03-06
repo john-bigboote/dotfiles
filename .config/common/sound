@@ -1,0 +1,19 @@
+#!/bin/sh
+case "$1" in
+    "+")
+    # amixer set Master 10%+ unmute
+    pactl set-sink-volume @DEFAULT_SINK@ +10%
+    ;;
+    "-")
+    # amixer set Master 10%- unmute
+    pactl set-sink-volume @DEFAULT_SINK@ -10%
+    ;;
+    "m")
+    # amixer set Master toggle
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+    ;;
+    "M")
+    # amixer set Mic toggle
+    pactl set-source-mute @DEFAULT_SOURCE@ toggle
+    ;;
+esac

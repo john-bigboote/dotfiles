@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# wallpaper
+wallpaper
+
+# compositor
+picom &
+
+# bar
+bar
+
+# monitor
+monitor

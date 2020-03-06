@@ -1,0 +1,3 @@
+#!/bin/sh
+
+feh --bg-scale $XDG_CONFIG_HOME/common/wallpaper.jpeg &

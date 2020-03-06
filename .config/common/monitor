@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# conky
+killall conky
+conky
+xdo hide -N Conky

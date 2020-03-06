@@ -1,0 +1,72 @@
+#!/usr/bin/env zsh
+
+# gstreamer aliases
+alias gst-intel="gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw,width=640,height=360 ! autovideosink"
+alias gst-intel-flip="gst-launch-1.0 v4l2src device=/dev/video0 ! videoflip video-direction=horiz ! video/x-raw,width=640,height=360 ! autovideosink"
+alias gst-landscape="gst-launch-1.0 udpsrc port=5000 ! h264parse ! avdec_h264 ! videoflip video-direction=identity ! autovideosink"
+alias gst-landscape-flip="gst-launch-1.0 udpsrc port=5000 ! h264parse ! avdec_h264 ! videoflip video-direction=identity ! videoflip video-direction=horiz ! autovideosink"
+alias gst-portrait="gst-launch-1.0 udpsrc port=5000 ! h264parse ! avdec_h264 ! videoflip video-direction=90r ! autovideosink"
+alias gst-portrait-flip="gst-launch-1.0 udpsrc port=5000 ! h264parse ! avdec_h264 ! videoflip video-direction=90r ! videoflip video-direction=horiz ! autovideosink"
+
+alias gst-audio="gst-launch-1.0 udpsrc port=5001 ! audio/x-raw, format=S16LE, channels=1, rate=16000 ! autoaudiosink"
+
+# common (comes before path so we can override the original path if we have to)
+export PATH=$XDG_CONFIG_HOME/common:$PATH
+
+# conda
+export PATH=$PATH:/opt/miniconda3/bin
+
+# npm
+export npm_config_prefix=$XDG_CONFIG_HOME/npm
+export NODE_PATH=$npm_config_prefix/lib/node_modules
+export PATH=$PATH:$npm_config_prefix/bin
+alias npm="npm -g"
+
+# spark
+export PATH=$PATH:/opt/apache-spark/bin
+
+# IITB openvpn
+IITBVPN_HOME="$XDG_CONFIG_HOME/common/iitbvpn"
+function iitbvpn() {
+    sudo openvpn \
+        --config $IITBVPN_HOME/iitbvpn.conf \
+        --up $IITBVPN_HOME/client.up \
+        --down $IITBVPN_HOME/client.down \
+        --auth-user-pass $IITBVPN_HOME/pass
+}
+
+# battery
+alias battery="more /sys/class/power_supply/BAT0/capacity"
+
+# mars.cse.iitb.ac.in
+alias mars.login="ssh tarunist@mars.cse.iitb.ac.in"
+alias mars.mount="sudo sshfs tarunist@mars.cse.iitb.ac.in:/users/ug16/tarunist /mnt"
+
+# terminal
+export TERMINAL="termite"
+
+# zfs
+export pool=barbatos
+export fs=$pool/$pool
+export device=/dev/sda1
+export mountpoint=/home/user/other/$pool
+alias zchown="sudo chown -R $USER:$USER $mountpoint"
+function zcreatepool() {
+    sudo zpool create -f -m $mountpoint -o ashift=12 $pool $device
+    sudo zfs set canmount=noauto $pool
+    sudo zfs unmount $pool
+}
+function zcreatefs() {
+    sudo zfs create \
+        -o mountpoint=$mountpoint \
+        -o canmount=noauto \
+        -o encryption=on \
+        -o keyphrase=passphrase \
+        $fs
+}
+function zmake() {
+    zcreatepool
+    sudo zfs mount $pool
+    zchown
+}
+alias zdestroy="sudo zpool destroy $pool"

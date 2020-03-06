@@ -1,0 +1,30 @@
+{
+    "Cache": {
+        "SearchHistroy": [
+            "sftp://mars.cse.iitb.ac.in"
+        ]
+    },
+    "FileViewState": {
+        "standard://desktop": {
+            "sortOrder": 0,
+            "sortRole": 265
+        },
+        "standard://documents": {
+            "sortOrder": 0,
+            "sortRole": 265
+        },
+        "standard://downloads/RosaImageWriter": {
+            "sortOrder": 0,
+            "sortRole": 265
+        }
+    },
+    "WindowManager": {
+        "SplitterState": {
+            "sidebar": 200
+        },
+        "WindowState": {
+            "height": 932,
+            "width": 856
+        }
+    }
+}

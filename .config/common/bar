@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+# polybar
+killall -q polybar
+sleep 1
+polybar example 1>/dev/null 2>/dev/null &
+sleep 1
+xdo hide -N Polybar
+
+# dzen2
+# dzen2 -fg white -ta r -fn -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso8859-1 < <(i3status) &
