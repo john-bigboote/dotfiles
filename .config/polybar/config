@@ -312,14 +312,14 @@ adapter = AC
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+format-charging-underline = #1A9900
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+format-discharging-underline = #ffb52a
 
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
+format-full-underline = #000099
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
