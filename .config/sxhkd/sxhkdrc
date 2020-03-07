@@ -23,8 +23,8 @@ super + Escape
 #
 
 # expand a window by moving one of its side outward
-super + ctrl + {Left,Down,Up,Right}
-	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+# super + ctrl + {Left,Down,Up,Right}
+# 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 # contract a window by moving one of its side inward
 # alt + shift + {Left,Down,Up,Right}
@@ -155,3 +155,7 @@ super + f
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# lock the screen
+super + shift + l
+	slock
