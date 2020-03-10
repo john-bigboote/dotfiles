@@ -1,0 +1,12 @@
+#!/bin/sh
+window=`xdotool search --class $2`
+case "$1" in
+    "show")
+    # xdo show -N $2
+    xdotool windowmap $window
+    ;;
+    "hide")
+    # xdo hide -N $2
+    xdotool windowunmap $window
+    ;;
+esac
