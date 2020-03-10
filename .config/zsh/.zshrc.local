@@ -74,10 +74,18 @@ alias zdestroy="sudo zpool destroy $pool"
 # aosp
 export LC_ALL=C
 
-# find mount
-function fmount() {
-    findmnt -n --output=target $1 || \
-    findmnt -n --output=target /dev/disk/by-partlabel/$1
+# findmnt and lsblk
+function get.mount() {
+    findmnt -no target -S $1 || \
+    findmnt -no target -S /dev/disk/by-partlabel/$1
+}
+function get.physical() {
+    findmnt -no source -T $1 || \
+    readlink -f /dev/disk/by-partlabel/$1
+}
+function get.partlabel() {
+    findmnt -no partlabel -T $1 || \
+    lsblk -no partlabel $1
 }
 
 # git minimal
