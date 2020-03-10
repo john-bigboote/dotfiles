@@ -80,8 +80,20 @@ function fmount() {
     findmnt -n --output=target /dev/disk/by-partlabel/$1
 }
 
-# sync dotfiles
+# git minimal
+function minconfig() {
+    USER=altaway
+    git config --local user.name $USER && \
+    git config --local user.email $USER@git.dom && \
+    git config --local credential.helper "store --file=.git/credentials" 
+}
+function minpush() {
+    git commit -am "" --allow-empty-message && \
+    git push origin master
+}
+
+# dotfiles
 function dotsync() {
-    cp -r ${1:-$HOME/other/dotfiles}/. ~ ;
+    cp -r ${1:-~/other/dotfiles}/. ~ ;
     rm -rf ~/.git
 }
