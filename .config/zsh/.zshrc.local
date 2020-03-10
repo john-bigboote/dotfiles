@@ -83,9 +83,10 @@ function fmount() {
 # git minimal
 function minconfig() {
     USER=altaway
-    git config --local user.name $USER && \
-    git config --local user.email $USER@git.dom && \
-    git config --local credential.helper "store --file=.git/credentials" 
+    CONFIG=${1:-global}
+    git config --$CONFIG user.name $USER && \
+    git config --$CONFIG user.email $USER@git.dom && \
+    git config --$CONFIG credential.helper "store --file=.git/credentials" 
 }
 function minpush() {
     git commit -am "" --allow-empty-message && \
