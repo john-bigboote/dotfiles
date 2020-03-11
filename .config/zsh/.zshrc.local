@@ -102,10 +102,19 @@ function punmount() {
 # git minimal
 function minconfig() {
     USER=altaway
-    CONFIG=${1:-local}
-    git config --$CONFIG user.name $USER --file=.git/config && \
-    git config --$CONFIG user.email $USER@git.dom --file=.git/config && \
-    git config --$CONFIG credential.helper 'store --file=.git/credentials'
+    CONFIG=${1:-global}
+    case $CONFIG in
+        global)
+        git config -f $XDG_CONFIG_HOME/git/config user.name $USER && \
+        git config -f $XDG_CONFIG_HOME/git/config user.email $USER@git.dom && \
+        git config credential.helper "store --file=$XDG_CONFIG_HOME/git/credentials"
+        ;;
+        local)
+        git config -f $XDG_CONFIG_HOME/git/config user.name $USER && \
+        git config -f $XDG_CONFIG_HOME/git/config user.email $USER@git.dom && \
+        git config credential.helper "store --file=.git/credentials"
+        ;;
+    esac
 }
 function minpush() {
     git commit -am "" --allow-empty-message && \
