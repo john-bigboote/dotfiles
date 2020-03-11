@@ -105,7 +105,7 @@ function minconfig() {
     CONFIG=${1:-local}
     git config --$CONFIG user.name $USER --file=.git/config && \
     git config --$CONFIG user.email $USER@git.dom --file=.git/config && \
-    git config --$CONFIG credential.helper "store --file=.git/credentials" 
+    git config --$CONFIG credential.helper 'store --file=.git/credentials'
 }
 function minpush() {
     git commit -am "" --allow-empty-message && \
