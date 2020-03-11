@@ -105,16 +105,16 @@ function minconfig() {
     CONFIG=${1:-global}
     case $CONFIG in
         global)
-        git config -f $XDG_CONFIG_HOME/git/config user.name $USER && \
-        git config -f $XDG_CONFIG_HOME/git/config user.email $USER@git.dom && \
-        git config credential.helper "store --file=$XDG_CONFIG_HOME/git/credentials"
+        CONFIGDIR=$XDG_CONFIG_HOME/git
         ;;
         local)
-        git config -f $XDG_CONFIG_HOME/git/config user.name $USER && \
-        git config -f $XDG_CONFIG_HOME/git/config user.email $USER@git.dom && \
-        git config credential.helper "store --file=.git/credentials"
+        CONFIGDIR=.git
         ;;
     esac
+    git config -f $CONFIGDIR/config user.name $USER && \
+    git config -f $CONFIGDIR/config user.email $USER@git.dom && \
+    git config -f $CONFIGDIR/config url.https://.insteadOf git://
+    git config credential.helper "store --file=$CONFIGDIR/credentials"
 }
 function minpush() {
     git commit -am "" --allow-empty-message && \
