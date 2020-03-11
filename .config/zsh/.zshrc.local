@@ -74,29 +74,35 @@ alias zdestroy="sudo zpool destroy $pool"
 # aosp
 export LC_ALL=C
 
-# Name of the OS
-alias os="neofetch distro --distro_shorthand tiny --os_arch off | sed \"s/distro: //\""
+# neofetch
+alias os="neofetch distro --distro_shorthand tiny --os_arch off | sed \"s/distro: //\" | sed \"s/ *$//\""
+function betterfetch() {
+    neofetch --chafa $XDG_CONFIG_HOME/common/`os`.png
+}
 
-# findmnt and lsblk
-function get.mount() {
+# get one given the other two, among mountpoint, physical block and partlabel, using findmnt and lsblk
+function util.mp() {
     findmnt -no target -S $1 || \
     findmnt -no target -S /dev/disk/by-partlabel/$1
 }
-function get.physical() {
+function util.blk() {
     findmnt -no source -T $1 || \
     readlink -f /dev/disk/by-partlabel/$1
 }
-function get.partlabel() {
-    findmnt -no partlabel -T $1 || \
-    lsblk -no partlabel $1
+function util.pl() {
+    lsblk -no partlabel $1 || \
+    findmnt -no partlabel -T $1
 }
 
-# mount and unmount, given the partlabel
-function pmount() {
-    udisksctl mount -b $(get.physical $1)
+# mount, change root or unmount, given the partlabel, using the above functions
+function util.mount() {
+    udisksctl mount -b $(util.blk $1)
 }
-function punmount() {
-    udisksctl unmount -b $(get.physical $1)
+function util.chroot() {
+    sudo chroot $(util.mp $1)
+}
+function util.unmount() {
+    udisksctl unmount -b $(util.blk $1)
 }
 
 # git minimal
