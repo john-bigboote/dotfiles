@@ -74,6 +74,9 @@ alias zdestroy="sudo zpool destroy $pool"
 # aosp
 export LC_ALL=C
 
+# Name of the OS
+alias os="neofetch distro --distro_shorthand tiny --os_arch off | sed \"s/distro: //\""
+
 # findmnt and lsblk
 function get.mount() {
     findmnt -no target -S $1 || \
@@ -88,13 +91,21 @@ function get.partlabel() {
     lsblk -no partlabel $1
 }
 
+# mount and unmount, given the partlabel
+function pmount() {
+    udisksctl mount -b $(get.physical $1)
+}
+function punmount() {
+    udisksctl unmount -b $(get.physical $1)
+}
+
 # git minimal
 function minconfig() {
     USER=altaway
-    CONFIG=${1:-global}
-    git config --$CONFIG user.name $USER && \
-    git config --$CONFIG user.email $USER@git.dom && \
-    git config --$CONFIG credential.helper "store --file=$XDG_CONFIG_HOME/git/credentials" 
+    CONFIG=${1:-local}
+    git config --$CONFIG user.name $USER --file=.git/config && \
+    git config --$CONFIG user.email $USER@git.dom --file=.git/config && \
+    git config --$CONFIG credential.helper "store --file=.git/credentials" 
 }
 function minpush() {
     git commit -am "" --allow-empty-message && \
