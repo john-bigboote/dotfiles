@@ -28,6 +28,9 @@ export PATH=$PATH:/opt/apache-spark/bin
 # rust
 export PATH=$PATH:$HOME/.cargo/bin
 
+# fileserver
+alias fileserver="bftpd -D -c $XDG_CONFIG_HOME/common/bftpd.conf"
+
 # IITB openvpn
 IITBVPN_HOME="$XDG_CONFIG_HOME/common/iitbvpn"
 function iitbvpn() {
