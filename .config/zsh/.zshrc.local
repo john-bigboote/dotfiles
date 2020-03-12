@@ -25,6 +25,9 @@ alias npm="npm -g"
 # spark
 export PATH=$PATH:/opt/apache-spark/bin
 
+# rust
+export PATH=$PATH:$HOME/.cargo/bin
+
 # IITB openvpn
 IITBVPN_HOME="$XDG_CONFIG_HOME/common/iitbvpn"
 function iitbvpn() {
