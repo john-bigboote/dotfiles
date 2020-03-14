@@ -9,6 +9,10 @@ function dotsync() {
     rm -rf ~/.git
 }
 
+# local path
+export LOCAL_PATH=$HOME/.local/bin
+export PATH=$LOCAL_PATH:$PATH
+
 # gstreamer aliases
 alias gst-intel="gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw,width=640,height=360 ! autovideosink"
 alias gst-intel-flip="gst-launch-1.0 v4l2src device=/dev/video0 ! videoflip video-direction=horiz ! video/x-raw,width=640,height=360 ! autovideosink"
