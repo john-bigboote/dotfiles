@@ -23,6 +23,9 @@ alias gst-portrait-flip="gst-launch-1.0 udpsrc port=5000 ! h264parse ! avdec_h26
 
 alias gst-audio="gst-launch-1.0 udpsrc port=5001 ! audio/x-raw, format=S16LE, channels=1, rate=16000 ! autoaudiosink"
 
+# terminfo, helps with a few problems like the backspace of the python shell
+export TERMINFO=/usr/share/terminfo
+
 # conda
 export PATH=$PATH:/opt/miniconda3/bin
 . <(conda shell.zsh hook)
