@@ -25,7 +25,7 @@ alias gst-audio="gst-launch-1.0 udpsrc port=5001 ! audio/x-raw, format=S16LE, ch
 
 # conda
 export PATH=$PATH:/opt/miniconda3/bin
-export CONDA_ROOT=$XDG_DATA_HOME/conda
+. <(conda shell.zsh hook)
 alias condactl="conda config --file $DOTFILES_CONFIG_HOME/conda/condarc"
 
 # npm
