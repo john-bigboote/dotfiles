@@ -2,8 +2,10 @@
 
 # dotfiles
 export DOTFILES=~/other/dotfiles
+export DOTFILES_CONFIG_HOME=$DOTFILES/.config
+export DOTFILES_DATA_HOME=$DOTFILES/.local/share
 function dotsync() {
-    cp -r ${1:-~$DOTFILES}/. ~ ;
+    cp -r ${1:-$DOTFILES}/. ~ ;
     rm -rf ~/.git
 }
 
@@ -23,6 +25,7 @@ export PATH=$XDG_CONFIG_HOME/common:$PATH
 # conda
 export PATH=$PATH:/opt/miniconda3/bin
 export CONDA_ROOT=$XDG_DATA_HOME/conda
+alias condactl="conda config --file $DOTFILES_CONFIG_HOME/conda/condarc"
 
 # npm
 export npm_config_prefix=$XDG_DATA_HOME/npm
