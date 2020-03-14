@@ -1,5 +1,12 @@
 #!/usr/bin/env zsh
 
+# dotfiles
+export DOTFILES=~/other/dotfiles
+function dotsync() {
+    cp -r ${1:-~$DOTFILES}/. ~ ;
+    rm -rf ~/.git
+}
+
 # gstreamer aliases
 alias gst-intel="gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw,width=640,height=360 ! autovideosink"
 alias gst-intel-flip="gst-launch-1.0 v4l2src device=/dev/video0 ! videoflip video-direction=horiz ! video/x-raw,width=640,height=360 ! autovideosink"
@@ -15,6 +22,7 @@ export PATH=$XDG_CONFIG_HOME/common:$PATH
 
 # conda
 export PATH=$PATH:/opt/miniconda3/bin
+export CONDA_ROOT=$XDG_DATA_HOME/conda
 
 # npm
 export npm_config_prefix=$XDG_DATA_HOME/npm
@@ -134,10 +142,4 @@ function minconfig() {
 function minpush() {
     git commit -am "" --allow-empty-message && \
     git push origin master
-}
-
-# dotfiles
-function dotsync() {
-    cp -r ${1:-~/other/dotfiles}/. ~ ;
-    rm -rf ~/.git
 }
