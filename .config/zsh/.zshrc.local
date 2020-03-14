@@ -9,7 +9,7 @@ function dotsync() {
     rm -rf ~/.git
 }
 
-# local path
+# local path (comes before path so we can override the original path if we have to)
 export LOCAL_PATH=$HOME/.local/bin
 export PATH=$LOCAL_PATH:$PATH
 
@@ -22,9 +22,6 @@ alias gst-portrait="gst-launch-1.0 udpsrc port=5000 ! h264parse ! avdec_h264 ! v
 alias gst-portrait-flip="gst-launch-1.0 udpsrc port=5000 ! h264parse ! avdec_h264 ! videoflip video-direction=90r ! videoflip video-direction=horiz ! autovideosink"
 
 alias gst-audio="gst-launch-1.0 udpsrc port=5001 ! audio/x-raw, format=S16LE, channels=1, rate=16000 ! autoaudiosink"
-
-# common (comes before path so we can override the original path if we have to)
-export PATH=$XDG_CONFIG_HOME/common:$PATH
 
 # conda
 export PATH=$PATH:/opt/miniconda3/bin
