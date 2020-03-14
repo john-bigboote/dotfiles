@@ -17,13 +17,14 @@ export PATH=$XDG_CONFIG_HOME/common:$PATH
 export PATH=$PATH:/opt/miniconda3/bin
 
 # npm
-export npm_config_prefix=$XDG_CONFIG_HOME/npm
+export npm_config_prefix=$XDG_DATA_HOME/npm
 export NODE_PATH=$npm_config_prefix/lib/node_modules
 export PATH=$PATH:$npm_config_prefix/bin
 alias npm="npm -g"
 
 # spark
-export PATH=$PATH:/opt/apache-spark/bin
+export SPARK_HOME=$XDG_DATA_HOME/spark-2.4.5-bin-hadoop2.7
+export PATH=$PATH:$SPARK_HOME/bin
 
 # rust
 export PATH=$PATH:$HOME/.cargo/bin
@@ -45,8 +46,10 @@ function iitbvpn() {
 alias battery="more /sys/class/power_supply/BAT0/capacity"
 
 # mars.cse.iitb.ac.in
-alias mars.login="ssh tarunist@mars.cse.iitb.ac.in"
-alias mars.mount="sudo sshfs tarunist@mars.cse.iitb.ac.in:/users/ug16/tarunist /mnt"
+export MARSUSER=tarunist
+export MARSCLASS=ug16
+alias mars.login="ssh $MARSUSER@mars.cse.iitb.ac.in"
+alias mars.mount="sudo sshfs $MARSUSER@mars.cse.iitb.ac.in:/users/$MARSCLASS/$MARSUSER /mnt"
 
 # terminal
 export TERMINAL="termite"
