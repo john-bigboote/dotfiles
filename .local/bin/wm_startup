@@ -7,7 +7,7 @@ hotkey-map
 wallpaper
 
 # compositor
-picom &
+compositor
 
 # bar
 bar
