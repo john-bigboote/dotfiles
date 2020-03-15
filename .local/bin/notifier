@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# dunst
+killall dunst
+dunst &
