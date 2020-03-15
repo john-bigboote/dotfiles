@@ -9,6 +9,9 @@ function dotsync() {
     rm -rf ~/.git
 }
 
+# git username, put at the beginning of this file to be referenced in the rest of the file
+export GITUSER=altaway
+
 # local path (comes before path so we can override the original path if we have to)
 export LOCAL_PATH=$HOME/.local/bin
 export PATH=$LOCAL_PATH:$PATH
@@ -129,7 +132,6 @@ function util.unmount() {
 
 # git minimal
 function minconfig() {
-    USER=altaway
     CONFIG=${1:-global}
     case $CONFIG in
         global)
@@ -139,8 +141,8 @@ function minconfig() {
         CONFIGDIR=.git
         ;;
     esac
-    git config -f $CONFIGDIR/config user.name $USER && \
-    git config -f $CONFIGDIR/config user.email $USER@git.dom && \
+    git config -f $CONFIGDIR/config user.name $GITUSER && \
+    git config -f $CONFIGDIR/config user.email $GITUSER@git.dom && \
     git config -f $CONFIGDIR/config url.https://.insteadOf git://
     git config credential.helper "store --file=$CONFIGDIR/credentials"
 }
@@ -148,3 +150,11 @@ function minpush() {
     git commit -am "" --allow-empty-message && \
     git push origin master
 }
+
+# test message for printing somewhere, notification dialogs for example
+export TEST_MSG_RESOURCE=$GITUSER.gitlab.io
+export TEST_MSG_PATH=/tmp/$TEST_MSG_RESOURCE
+if [ ! -e $TEST_MSG_PATH ]
+then curl -o $TEST_MSG_PATH https://$TEST_MSG_RESOURCE 
+fi
+export TEST_MSG="`cat $TEST_MSG_PATH`"

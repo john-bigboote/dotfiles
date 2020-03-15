@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# hotkey mapper
+hotkey-map
+
 # wallpaper
 wallpaper
 

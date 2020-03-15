@@ -3,3 +3,6 @@
 # dunst
 killall dunst
 dunst &
+
+# test
+notify-send "$TEST_MSG"

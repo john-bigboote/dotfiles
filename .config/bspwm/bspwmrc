@@ -1,7 +1,5 @@
 #! /bin/sh
 
-sxhkd &
-
 wm_startup
 
 bspc monitor -d I II III IV V VI VII VIII IX X
