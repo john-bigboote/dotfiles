@@ -5,4 +5,5 @@ killall dunst
 dunst &
 
 # test
-notify-send "$TEST_MSG"
+notify-send testing
+notify-send "testing again"

@@ -5,7 +5,7 @@ export DOTFILES=~/other/dotfiles
 export DOTFILES_CONFIG_HOME=$DOTFILES/.config
 export DOTFILES_DATA_HOME=$DOTFILES/.local/share
 function dotsync() {
-    cp -r ${1:-$DOTFILES}/. ~ ;
+    cp -r ${1:-$DOTFILES}/. ~
     rm -rf ~/.git
 }
 
@@ -67,8 +67,8 @@ export MARSCLASS=ug16
 alias mars.login="ssh $MARSUSER@mars.cse.iitb.ac.in"
 alias mars.mount="sudo sshfs $MARSUSER@mars.cse.iitb.ac.in:/users/$MARSCLASS/$MARSUSER /mnt"
 
-# terminal
-export TERMINAL="termite"
+# terminal, I don't remember why I put this
+# export TERMINAL="termite"
 
 # zfs
 export pool=barbatos
@@ -150,11 +150,3 @@ function minpush() {
     git commit -am "" --allow-empty-message && \
     git push origin master
 }
-
-# test message for printing somewhere, notification dialogs for example
-export TEST_MSG_RESOURCE=$GITUSER.gitlab.io
-export TEST_MSG_PATH=/tmp/$TEST_MSG_RESOURCE
-if [ ! -e $TEST_MSG_PATH ]
-then curl -o $TEST_MSG_PATH https://$TEST_MSG_RESOURCE 
-fi
-export TEST_MSG="`cat $TEST_MSG_PATH`"
