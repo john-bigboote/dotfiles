@@ -1,0 +1,26 @@
+#!/bin/sh
+case "$1" in
+    # get one given the other two, among mountpoint, physical block and partlabel, using findmnt and lsblk
+    "mp")
+    findmnt -no target -S $2 || \
+    findmnt -no target -S /dev/disk/by-partlabel/$2
+    ;;
+    "blk")
+    findmnt -no source -T $2 || \
+    readlink -f /dev/disk/by-partlabel/$2
+    ;;
+    "pl")
+    lsblk -no partlabel $2 || \
+    findmnt -no partlabel -T $2
+    ;;
+    # mount, change root or unmount, given the partlabel, using the above functions
+    "mount")
+    udisksctl mount -b `utilctl blk $2`
+    ;;
+    "chroot")
+    sudo chroot `utilctl mp $2`
+    ;;
+    "unmount")
+    udisksctl unmount -b `utilctl blk $2`
+    ;;
+esac
