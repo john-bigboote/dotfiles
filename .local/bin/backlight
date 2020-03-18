@@ -1,9 +1,9 @@
 #!/bin/sh
 case "$1" in
     "+")
-    xbacklight -inc 5 || light -A 5
+    light -A 5 || xbacklight -inc 5
     ;;
     "-")
-    xbacklight -dec 5 || light -U 5
+    light -U 5 || xbacklight -dec 5
     ;;
 esac
