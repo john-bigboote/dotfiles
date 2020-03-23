@@ -1,11 +1,12 @@
 #!/usr/bin/env zsh
 
-manage() {
+lock() {
 	slock &
 	sleep 1
-	systemctl $1
 }
 
 [[ $1 = suspend ]] || \
 [[ $1 = hibernate ]] && \
-manage $1
+lock
+
+systemctl $1
