@@ -6,7 +6,6 @@ manage() {
 	systemctl $1
 }
 
-if [[ $1 = suspend ]] || [[ $1 = hibernate ]] 
-then manage
-else exit 1
-fi
+[[ $1 = suspend ]] || \
+[[ $1 = hibernate ]] && \
+manage $1
