@@ -272,18 +272,10 @@ format-disconnected =
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 1
 
-date = "%Y-%m-%d"
-;date-alt = " %Y-%m-%d"
-
-time = %l:%M
-;time-alt = %H:%M:%S
-
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
-;format-underline = #0a6cf5
-
+date = "%F_%a"
+time = %T
 label = %date% %time%
 
 [module/volume]

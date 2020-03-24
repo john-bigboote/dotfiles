@@ -123,3 +123,7 @@ function minpush() {
     git commit -am "" --allow-empty-message && \
     git push origin master
 }
+
+# query time
+alias today="date +%F_%a"
+alias now="date +%T"
