@@ -1,10 +1,14 @@
-#!/bin/sh
-window=`xdotool search --class $2`
-case "$1" in
-    "show")
-    xdo show -N $2 || xdotool windowmap $window
-    ;;
-    "hide")
-    xdo hide -N $2 || xdotool windowunmap $window
-    ;;
-esac
+#!/usr/bin/env zsh
+
+for process in ${@:1}
+do 
+	window=`xdotool search --class $process`
+	case "$1" in
+		"show")
+		xdo show -N $process || xdotool windowmap $window
+		;;
+		"hide")
+		xdo hide -N $process || xdotool windowunmap $window
+		;;
+	esac
+done

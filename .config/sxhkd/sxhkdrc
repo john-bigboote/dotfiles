@@ -47,10 +47,10 @@ ctrl + grave
 #	polybar-msg cmd toggle
 
 super + space
-	xctl show Conky && xctl show Polybar
+	xctl show Conky Polybar
 
 super + @space
-	xctl hide Conky && xctl hide Polybar
+	xctl hide Conky Polybar
 
 # screenshot
 super + Print
