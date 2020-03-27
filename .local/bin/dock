@@ -1,0 +1,7 @@
+#!/bin/sh
+
+killall polybar conky
+sleep 1
+polybar example 1>/dev/null 2>/dev/null & conky
+sleep 1
+xctl hide Polybar & xctl hide Conky

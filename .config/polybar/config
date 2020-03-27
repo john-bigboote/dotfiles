@@ -354,7 +354,7 @@ format-volume = <ramp-volume> <label-volume>
 ; Available tokens:
 ;   %percentage% (default)
 label-muted = 🔇 muted
-label-muted-foreground = #66
+label-muted-foreground = ${colors.foreground}
 
 ; Only applies if <ramp-volume> is used
 ramp-volume-0 = 🔈
@@ -404,7 +404,7 @@ format-volume = <ramp-volume> <label-volume>
 ;   %percentage% (default)
 ;   %decibels% (unreleased)
 label-muted = 🔇 muted
-label-muted-foreground = #666
+label-muted-foreground = ${colors.foreground}
 
 ; Only applies if <ramp-volume> is used
 ramp-volume-0 = 🔈

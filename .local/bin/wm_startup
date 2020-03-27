@@ -10,10 +10,13 @@ wallpaper
 compositor
 
 # bar
-bar
+# bar &
 
 # monitor
-monitor
+# monitor &
+
+# dock
+dock &
 
 # notifications
 notifier

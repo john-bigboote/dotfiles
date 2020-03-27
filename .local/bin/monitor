@@ -2,5 +2,7 @@
 
 # conky
 killall conky
+sleep 1
 conky
-xdo hide -N Conky
+sleep 2
+xctl hide Conky

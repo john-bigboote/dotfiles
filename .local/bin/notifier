@@ -5,5 +5,5 @@ killall dunst
 dunst &
 
 # test
-notify-send testing
-notify-send "testing again"
+# notify-send testing
+# notify-send "testing again"
