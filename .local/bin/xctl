@@ -2,13 +2,13 @@
 
 for process in ${@:1}
 do 
-	window=`xdotool search --class $process`
 	case "$1" in
 		"show")
-		xdo show -N $process || xdotool windowmap $window
+		cmd=windowmap
 		;;
 		"hide")
-		xdo hide -N $process || xdotool windowunmap $window
+		cmd=windowunmap
 		;;
 	esac
+	xdotool search --class $process $cmd %@ windowraise %@ || xdo $1 -N $process
 done
