@@ -101,7 +101,7 @@ export LC_ALL=C
 
 # neofetch
 alias os="neofetch distro --distro_shorthand tiny --os_arch off | sed \"s/distro: //\" | sed \"s/ *$//\""
-alias betterfetch="neofetch --chafa $XDG_CONFIG_HOME/common/`os`.png"
+alias betterfetch="neofetch --chafa $XDG_DATA_HOME/logos/`os`.png"
 
 # git minimal
 function minconfig() {
