@@ -121,7 +121,7 @@ function minconfig() {
 }
 function minpush() {
     git commit -am "" --allow-empty-message && \
-    git push origin master
+    git push origin `git rev-parse --abbrev-ref HEAD`
 }
 
 # query time
