@@ -134,24 +134,24 @@ alias now="date +%T"
 export REGISTRY=registry.gitlab.com/$GITUSER
 export DEFAULTIMG=fedora
 export DEFAULTCNT=env
-imgpull() {
+img.pull() {
 	docker pull $REGISTRY/docker-${1:-DEFAULTIMG}
 }
-imgrm() {
+img.rm() {
 	docker image rm $REGISTRY/docker-${1:-DEFAULTIMG}
 }
-cntcreate() {
+cnt.create() {
 	docker container create -it --name ${2:-DEFAULTCNT} -h ${2:-DEFAULTCNT} $REGISTRY/docker-${1:-DEFAULTIMG} $DEFAULTSHELL
 }
-cntstart() {
+cnt.start() {
 	docker container start ${2:-DEFAULTCNT}
 }
-cntattach() {
+cnt.attach() {
 	docker container attach ${2:-DEFAULTCNT}
 }
-cntadd() { # add shell instance to a running container
+cnt.add() { # add shell instance to a running container
 	docker container exec -it ${2:-DEFAULTCNT} $DEFAULTSHELL
 }
-cntrm() {
+cnt.rm() {
 	docker container rm ${2:-DEFAULTCNT}
 }
