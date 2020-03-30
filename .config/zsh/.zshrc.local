@@ -9,6 +9,8 @@ dotsync() {
     rm -rf ~/.git
 }
 
+export DEFAULTSHELL=zsh
+
 # git username, put at the beginning of this file to be referenced in the rest of the file
 export GITUSER=altaway
 
@@ -127,3 +129,29 @@ minpush() {
 # query time
 alias today="date +%F_%a"
 alias now="date +%T"
+
+# docker/podman
+export REGISTRY=registry.gitlab.com/$GITUSER
+export DEFAULTIMG=fedora
+export DEFAULTCNT=env
+imgpull() {
+	docker pull $REGISTRY/docker-${1:-DEFAULTIMG}
+}
+imgrm() {
+	docker image rm $REGISTRY/docker-${1:-DEFAULTIMG}
+}
+cntcreate() {
+	docker container create -it --name ${2:-DEFAULTCNT} -h ${2:-DEFAULTCNT} $REGISTRY/docker-${1:-DEFAULTIMG} $DEFAULTSHELL
+}
+cntstart() {
+	docker container start ${2:-DEFAULTCNT}
+}
+cntattach() {
+	docker container attach ${2:-DEFAULTCNT}
+}
+cntadd() { # add shell instance to a running container
+	docker container exec -it ${2:-DEFAULTCNT} $DEFAULTSHELL
+}
+cntrm() {
+	docker container rm ${2:-DEFAULTCNT}
+}

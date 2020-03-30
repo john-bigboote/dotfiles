@@ -159,3 +159,10 @@ super + {_,shift + }{1-9,0}
 # power shortcuts
 super + shift + {l,h}
 	powerctl {suspend,hibernate}
+
+# rotate
+super + {Prior,Next}
+	bspc node -R {90,270}
+
+# flip
+super + {bracketright,}
