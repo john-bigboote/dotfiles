@@ -120,11 +120,8 @@ minconfig() {
     git config credential.helper "store --file=$CONFIGDIR/credentials"
 }
 minpush() {
-	getbranch() {
-		git rev-parse --abbrev-ref HEAD
-	}
-    git commit -am "" --allow-empty-message && \
-    git push origin `getbranch`
+	git commit -am "" --allow-empty-message && \
+    git push origin `git rev-parse --abbrev-ref HEAD`
 }
 
 # query time
