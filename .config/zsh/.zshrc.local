@@ -4,7 +4,7 @@
 export DOTFILES=~/other/dotfiles
 export DOTFILES_CONFIG_HOME=$DOTFILES/.config
 export DOTFILES_DATA_HOME=$DOTFILES/.local/share
-function dotsync() {
+dotsync() {
     cp -r ${1:-$DOTFILES}/. ~
     rm -rf ~/.git
 }
@@ -50,7 +50,7 @@ alias fileserver="sudo bftpd -D -c $XDG_CONFIG_HOME/common/bftpd.conf"
 
 # IITB openvpn
 IITBVPN_HOME="$XDG_CONFIG_HOME/common/iitbvpn"
-function iitbvpn() {
+iitbvpn() {
     sudo openvpn \
         --config $IITBVPN_HOME/iitbvpn.conf \
         --up $IITBVPN_HOME/client.up \
@@ -76,12 +76,12 @@ export fs=$pool/$pool
 export device=/dev/sda1
 export mountpoint=/home/user/other/$pool
 alias zchown="sudo chown -R $USER:$USER $mountpoint"
-function zcreatepool() {
+zcreatepool() {
     sudo zpool create -f -m $mountpoint -o ashift=12 $pool $device
     sudo zfs set canmount=noauto $pool
     sudo zfs unmount $pool
 }
-function zcreatefs() {
+zcreatefs() {
     sudo zfs create \
         -o mountpoint=$mountpoint \
         -o canmount=noauto \
@@ -89,7 +89,7 @@ function zcreatefs() {
         -o keyphrase=passphrase \
         $fs
 }
-function zmake() {
+zmake() {
     zcreatepool
     sudo zfs mount $pool
     zchown
@@ -104,7 +104,7 @@ alias os="neofetch distro --distro_shorthand tiny --os_arch off | sed \"s/distro
 alias betterfetch="neofetch --chafa $XDG_DATA_HOME/logos/`os`.png"
 
 # git minimal
-function minconfig() {
+minconfig() {
     CONFIG=${1:-global}
     case $CONFIG in
         global)
@@ -119,9 +119,12 @@ function minconfig() {
     git config -f $CONFIGDIR/config url.https://.insteadOf git://
     git config credential.helper "store --file=$CONFIGDIR/credentials"
 }
-function minpush() {
+minpush() {
+	getbranch() {
+		git rev-parse --abbrev-ref HEAD
+	}
     git commit -am "" --allow-empty-message && \
-    git push origin `git rev-parse --abbrev-ref HEAD`
+    git push origin `getbranch`
 }
 
 # query time
