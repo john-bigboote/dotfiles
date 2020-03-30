@@ -161,8 +161,9 @@ super + shift + {l,h}
 	powerctl {suspend,hibernate}
 
 # rotate
-super + {Prior,Next}
+super + shift + {Prior,Next}
 	bspc node -R {90,270}
 
 # flip
-super + {bracketright,}
+super + shift + {bracketright,backslash}
+	bspc node -F {horizontal,vertical}

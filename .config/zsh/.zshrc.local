@@ -135,23 +135,23 @@ export REGISTRY=registry.gitlab.com/$GITUSER
 export DEFAULTIMG=fedora
 export DEFAULTCNT=env
 img.pull() {
-	docker pull $REGISTRY/docker-${1:-DEFAULTIMG}
+	docker pull $REGISTRY/docker-${1:-$DEFAULTIMG}
 }
 img.rm() {
-	docker image rm $REGISTRY/docker-${1:-DEFAULTIMG}
+	docker image rm $REGISTRY/docker-${1:-$DEFAULTIMG}
 }
 cnt.create() {
-	docker container create -it --name ${2:-DEFAULTCNT} -h ${2:-DEFAULTCNT} $REGISTRY/docker-${1:-DEFAULTIMG} $DEFAULTSHELL
+	docker container create -it --name ${2:-$DEFAULTCNT} -h ${2:-$DEFAULTCNT} $REGISTRY/docker-${1:-$DEFAULTIMG} $DEFAULTSHELL
 }
 cnt.start() {
-	docker container start ${2:-DEFAULTCNT}
+	docker container start ${2:-$DEFAULTCNT}
 }
 cnt.attach() {
-	docker container attach ${2:-DEFAULTCNT}
+	docker container attach ${2:-$DEFAULTCNT}
 }
 cnt.add() { # add shell instance to a running container
-	docker container exec -it ${2:-DEFAULTCNT} $DEFAULTSHELL
+	docker container exec -it ${2:-$DEFAULTCNT} $DEFAULTSHELL
 }
 cnt.rm() {
-	docker container rm ${2:-DEFAULTCNT}
+	docker container rm ${2:-$DEFAULTCNT}
 }
