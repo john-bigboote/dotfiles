@@ -1,3 +1,10 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
-feh --bg-scale $XDG_DATA_HOME/wallpapers/wallpaper.jpeg &
+cd $XDG_DATA_HOME/wallpapers
+[[ -n $1 ]] && [[ -f $1.jpeg ]] && { 
+	rm wallpaper.jpeg 
+	ln -s $1.jpeg wallpaper.jpeg 
+	feh --bg-scale wallpaper.jpeg &
+} || {
+	feh --bg-scale wallpaper.jpeg & 
+} || exit 1 
