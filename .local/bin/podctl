@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# docker/podman
+REGISTRY=registry.gitlab.com/$GITUSER
+DEFAULTIMG=fedora
+DEFAULTCNT=env
+
+[[ $1 == image ]] && {
+	[[ $2 == pull ]] && docker pull $REGISTRY/docker-${1:-$DEFAULTIMG} || \
+	[[ $2 == rm ]] && docker image rm $REGISTRY/docker-${1:-$DEFAULTIMG} || \
+	exit 1
+} || [[ $1 == container ]] && {
+	[[ $2 == create ]] && docker container create -it --name ${2:-$DEFAULTCNT} -h ${2:-$DEFAULTCNT} $REGISTRY/docker-${1:-$DEFAULTIMG} $DEFAULTSHELL
+	[[ $2 == start ]] && docker container start ${2:-$DEFAULTCNT}
+	[[ $2 == attach ]] && docker container attach ${2:-$DEFAULTCNT} # add shell instance to a running container
+	[[ $2 == add ]] && docker container exec -it ${2:-$DEFAULTCNT} $DEFAULTSHELL
+	[[ $2 == rm ]] && docker container rm ${2:-$DEFAULTCNT}
+}
