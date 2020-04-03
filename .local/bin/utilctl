@@ -3,11 +3,9 @@
 # get one given the other two, among mountpoint, physical block and partlabel, using findmnt and lsblk
 [[ $1 == mountpoint ]] && {
 	findmnt -no target -S $2 || findmnt -no target -S /dev/disk/by-partlabel/$2
-}
-[[ $1 == device ]] && {
+} || [[ $1 == device ]] && {
 	findmnt -no source -T $2 || readlink -f /dev/disk/by-partlabel/$2
-}
-[[ $1 == partlabel ]] && {
+} || [[ $1 == partlabel ]] && {
 	lsblk -no partlabel $2 || findmnt -no partlabel -T $2
 }
 

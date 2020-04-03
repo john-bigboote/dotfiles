@@ -5,6 +5,7 @@ export DOTFILES=~/other/dotfiles
 export DOTFILES_CONFIG_HOME=$DOTFILES/.config
 export DOTFILES_DATA_HOME=$DOTFILES/.local/share
 dotsync() {
+	chmod -R +x ~/.local/bin $DOTFILES/.local/bin
     cp -r ${1:-$DOTFILES}/. ~
     rm -rf ~/.git
 }
@@ -17,16 +18,6 @@ export GITUSER=altaway
 # local path (comes before path so we can override the original path if we have to)
 export LOCAL_PATH=$HOME/.local/bin
 export PATH=$LOCAL_PATH:$PATH
-
-# gstreamer aliases
-alias gst-intel="gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw,width=640,height=360 ! autovideosink"
-alias gst-intel-flip="gst-launch-1.0 v4l2src device=/dev/video0 ! videoflip video-direction=horiz ! video/x-raw,width=640,height=360 ! autovideosink"
-alias gst-landscape="gst-launch-1.0 udpsrc port=5000 ! h264parse ! avdec_h264 ! videoflip video-direction=identity ! autovideosink"
-alias gst-landscape-flip="gst-launch-1.0 udpsrc port=5000 ! h264parse ! avdec_h264 ! videoflip video-direction=identity ! videoflip video-direction=horiz ! autovideosink"
-alias gst-portrait="gst-launch-1.0 udpsrc port=5000 ! h264parse ! avdec_h264 ! videoflip video-direction=90r ! autovideosink"
-alias gst-portrait-flip="gst-launch-1.0 udpsrc port=5000 ! h264parse ! avdec_h264 ! videoflip video-direction=90r ! videoflip video-direction=horiz ! autovideosink"
-
-alias gst-audio="gst-launch-1.0 udpsrc port=5001 ! audio/x-raw, format=S16LE, channels=1, rate=16000 ! autoaudiosink"
 
 # conda
 export PATH=$PATH:/opt/miniconda3/bin
@@ -129,29 +120,3 @@ minpush() {
 # query time
 alias today="date +%F_%a"
 alias now="date +%T"
-
-# docker/podman
-export REGISTRY=registry.gitlab.com/$GITUSER
-export DEFAULTIMG=fedora
-export DEFAULTCNT=env
-img.pull() {
-	docker pull $REGISTRY/docker-${1:-$DEFAULTIMG}
-}
-img.rm() {
-	docker image rm $REGISTRY/docker-${1:-$DEFAULTIMG}
-}
-cnt.create() {
-	docker container create -it --name ${2:-$DEFAULTCNT} -h ${2:-$DEFAULTCNT} $REGISTRY/docker-${1:-$DEFAULTIMG} $DEFAULTSHELL
-}
-cnt.start() {
-	docker container start ${2:-$DEFAULTCNT}
-}
-cnt.attach() {
-	docker container attach ${2:-$DEFAULTCNT}
-}
-cnt.add() { # add shell instance to a running container
-	docker container exec -it ${2:-$DEFAULTCNT} $DEFAULTSHELL
-}
-cnt.rm() {
-	docker container rm ${2:-$DEFAULTCNT}
-}
