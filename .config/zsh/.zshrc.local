@@ -6,7 +6,7 @@ export DOTFILES_CONFIG_HOME=$DOTFILES/.config
 export DOTFILES_DATA_HOME=$DOTFILES/.local/share
 dotsync() {
 	chmod -R +x ~/.local/bin $DOTFILES/.local/bin
-    cp -r ${1:-$DOTFILES}/. ~
+    cp -rP ${1:-$DOTFILES}/. ~ # The option "P" stands for "no-dereference", to preserve symlinks. Short option -> POSIX compliance
     rm -rf ~/.git
 }
 
