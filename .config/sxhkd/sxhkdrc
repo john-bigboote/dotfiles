@@ -169,7 +169,7 @@ super + {bracketright,bracketleft}
 
 # change window gap
 super + {minus,equal}
-	bspc config window_gap $((`bspc config window_gap` {+,-} 2 ))
+	bspc config window_gap $((`bspc config window_gap` {-,+} 2 ))
 
 # reset window gap and padding
 super + backspace
