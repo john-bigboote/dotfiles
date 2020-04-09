@@ -4,14 +4,14 @@
 
 # preselect the direction
 super + {Left,Down,Up,Right}
-	bspc node -p '~{west,south,north,east}'
+	bspc node -p \~{west,south,north,east}
 # preselect the ratio
 # super + ctrl + {1-9}
 #	bspc node -o 0.{1-9}
 
 # cancel the preselection for the focused node
-super + Escape
-	bspc node -p cancel
+# super + Escape
+# 	bspc node -p cancel
 
 # cancel the preselection for the focused desktop
 # super + ctrl + shift + space
@@ -156,9 +156,25 @@ super + shift + {l,h}
 	powerctl {suspend,hibernate}
 
 # rotate the parent of a leaf node (window/receptacle, I think), there is no such thing as rotating the leaf node itself
-super + shift + {bracketright,bracketleft}
+super + {bracketright,bracketleft}
 	bspc node @parent -R {90,-90}
 
 # flip
 # super + shift + {bracketright,backslash}
 # 	bspc node -F {horizontal,vertical}
+
+#
+# gap/padding
+#
+
+# change window gap
+super + {minus,equal}
+	bspc config window_gap $((`bspc config window_gap` {+,-} 2 ))
+
+# reset window gap and padding
+super + backspace
+	bspc config window_gap 0 && \
+	bspc config left_padding 0 && \
+	bspc config bottom_padding 0 && \
+	bspc config top_padding 0 && \
+	bspc config right_padding 0
