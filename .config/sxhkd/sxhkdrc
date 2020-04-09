@@ -61,9 +61,9 @@ XF86Audio{_,Mic}Mute
 XF86MonBrightness{Up,Down}
 	backlight {+,-}
 
-# make sxhkd reload its configuration files:
-# super + Escape
-#	pkill -USR1 -x sxhkd
+# sync configuration files
+super + shift + Return
+	dotsync
 
 #
 # bspwm hotkeys
@@ -172,7 +172,7 @@ super + {minus,equal}
 	bspc config window_gap $((`bspc config window_gap` {-,+} 2 ))
 
 # reset window gap and padding
-super + backspace
+super + BackSpace
 	bspc config window_gap 0 && \
 	bspc config left_padding 0 && \
 	bspc config bottom_padding 0 && \

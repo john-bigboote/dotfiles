@@ -15,4 +15,4 @@ bspc config gapless_monocle      true
 
 bspc config automatic_scheme     spiral
 
-bspc config presel_feedback_color "#2a2829"
+bspc config presel_feedback_color "#eeeeee"
