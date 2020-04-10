@@ -1,15 +1,13 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
 # get one given the other two, among mountpoint, physical block and partlabel, using findmnt and lsblk
-[[ $1 == mountpoint ]] && {
-	findmnt -no target -S $2 || findmnt -no target -S /dev/disk/by-partlabel/$2
-} || [[ $1 == device ]] && {
-	findmnt -no source -T $2 || readlink -f /dev/disk/by-partlabel/$2
-} || [[ $1 == partlabel ]] && {
-	lsblk -no partlabel $2 || findmnt -no partlabel -T $2
-}
+[[ $1 == mountpoint ]] && (findmnt -no target -S $2 || findmnt -no target -S /dev/disk/by-partlabel/$2)
+[[ $1 == device ]] && (findmnt -no source -T $2 || readlink -f /dev/disk/by-partlabel/$2)
+[[ $1 == partlabel ]] && (lsblk -no partlabel $2 || findmnt -no partlabel -T $2)
 
 # mount, change root or unmount, given the partlabel, using the above functions
 [[ $1 == mount ]] && udisksctl mount -b `utilctl device $2`
 [[ $1 == chroot ]] && sudo chroot `utilctl mountpoint $2`
 [[ $1 == unmount ]] && udisksctl unmount -b `utilctl device $2`
+
+exit 0
