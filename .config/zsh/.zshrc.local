@@ -7,8 +7,9 @@ export DOTFILES_DATA_HOME=$DOTFILES/.local/share
 
 export DEFAULTSHELL=zsh
 
-# git username, put at the beginning of this file to be referenced in the rest of the file
-export GITUSER=altaway
+# name and email, put at the beginning of this file to be referenced later
+export NAME=altaway
+export EMAIL=${NAME}@git
 
 # local path (comes before path so we can override the original path if we have to)
 export LOCAL_PATH=$HOME/.local/bin
@@ -18,7 +19,7 @@ export PATH=$LOCAL_PATH:$PATH
 export PATH=$PATH:/opt/miniconda3/bin
 export TERMINFO=/usr/share/terminfo # helps with a few problems like the backspace of the python shell
 . <(conda shell.zsh hook)
-alias condactl="conda config --file $DOTFILES_CONFIG_HOME/conda/condarc"
+alias condactl="conda config --file $XDG_CONFIG_HOME/conda/condarc"
 
 # npm
 export npm_config_prefix=$XDG_DATA_HOME/npm
@@ -107,8 +108,8 @@ minconfig() {
         CONFIGDIR=.git
         ;;
     esac
-    git config -f $CONFIGDIR/config user.name $GITUSER && \
-    git config -f $CONFIGDIR/config user.email $GITUSER@git.dom && \
+    git config -f $CONFIGDIR/config user.name $NAME && \
+    git config -f $CONFIGDIR/config user.email $EMAIL && \
     git config -f $CONFIGDIR/config url.https://.insteadOf git://
     git config credential.helper "store --file=$CONFIGDIR/credentials"
 }
