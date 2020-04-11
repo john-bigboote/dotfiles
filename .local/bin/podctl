@@ -9,11 +9,11 @@ IMG=${3:-$DEFAULTIMG}
 CNT=${4:-$DEFAULTCNT}
 
 [[ $1 == image ]] && {
-	[[ $2 == pull ]] && docker image pull $REGISTRY/docker-$IMG || \
-	[[ $2 == rm ]] && docker image rm $REGISTRY/docker-$IMG || \
+	[[ $2 == pull ]] && docker image pull $IMG || \
+	[[ $2 == rm ]] && docker image rm $IMG || \
 	exit 1
 } || [[ $1 == container ]] && {
-	[[ $2 == create ]] && docker container create -it --name $CNT -h $CNT $REGISTRY/docker-$IMG $DEFAULTSHELL || \
+	[[ $2 == create ]] && docker container create -it --name $CNT -h $CNT $IMG $DEFAULTSHELL || \
 	[[ $2 == start ]] && docker container start $CNT || \
 	[[ $2 == attach ]] && docker container attach $CNT || \
 	[[ $2 == add ]] && docker container exec -it $CNT $DEFAULTSHELL || \
