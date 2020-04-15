@@ -1,12 +1,9 @@
 #!/bin/sh
 
 # docker/podman
-DEFAULTIMG=fedora
-DEFAULTCNT=env
-
 PREFIX=$USER_NAME
-IMG=${2:-$DEFAULTIMG}
-CNT=${3:-$DEFAULTCNT}
+IMG=${2:-fedora}
+CNT=${3:-env}
 
 [[ $1 == pull ]] && \
 	docker image pull $PREFIX/$IMG && \
