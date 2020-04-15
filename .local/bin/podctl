@@ -1,7 +1,6 @@
 #!/bin/sh
 
 # docker/podman
-PREFIX=docker.io
 IMG=${2:-fedora:latest}
 CNT=${3:-env}
 
