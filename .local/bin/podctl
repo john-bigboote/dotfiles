@@ -4,6 +4,6 @@
 IMG=${2:-$USER_NAME/fedora:latest}
 CNT=${3:-env}
 
-[[ $1 == ls ]] && docker container ls -a
-[[ $1 == create ]] && docker container create -it --name $CNT -h $CNT $IMG $DEFAULTSHELL
-[[ $1 == fork ]] && docker container exec -it $CNT $DEFAULTSHELL
+[[ $1 == ls ]] && docker container ls -a && exit 0
+[[ $1 == create ]] && docker container create -it --name $CNT -h $CNT $IMG $DEFAULTSHELL && exit 0
+[[ $1 == fork ]] && docker container exec -it $CNT $DEFAULTSHELL && exit 0
