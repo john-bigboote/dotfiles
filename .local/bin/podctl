@@ -4,6 +4,17 @@
 IMG=${2:-$USER_NAME/fedora:latest}
 CNT=${3:-env}
 
-[[ $1 == ls ]] && docker container ls -a && exit 0
-[[ $1 == create ]] && docker container create -it --name $CNT -h $CNT $IMG $DEFAULTSHELL && exit 0
-[[ $1 == fork ]] && docker container exec -it $CNT $DEFAULTSHELL && exit 0
+# # I wish this syntax were valid
+# [[ $1 == {
+# 	ls ]] && docker container ls -a
+# 	create ]] && docker container create -it --name $CNT -h $CNT $IMG $DEFAULTSHELL
+# 	fork ]] && docker container exec -it $CNT $DEFAULTSHELL
+# }
+
+# We'll have to live with this until something is done.
+case $1 in
+	(ls) docker container ls -a ;;
+	(create) docker container create -it --name $CNT -h $CNT $IMG $DEFAULTSHELL ;;
+	(fork) docker container exec -it $CNT $DEFAULTSHELL ;;
+	(*) echo "podctl: subcommand not found"; exit -1;;
+esac
