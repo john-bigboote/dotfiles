@@ -1,20 +1,20 @@
 #!/bin/sh
 
 # docker/podman
-IMG=${2:-$USER_NAME/fedora:latest}
-CNT=${3:-env}
+DEFAULTIMG=${2:-$USER_NAME/fedora:latest}
 
 # # I wish this syntax were valid
 # [[ $1 == {
 # 	ls ]] && docker container ls -a
-# 	create ]] && docker container create -it --name $CNT -h $CNT $IMG $DEFAULTSHELL
-# 	fork ]] && docker container exec -it $CNT $DEFAULTSHELL
+# 	create ]] && docker container create -it --name $3 -h $3 ${2:-DEFAULTIMG} $DEFAULTSHELL
+# 	fork ]] && docker container exec -it $2 $DEFAULTSHELL
+#	* ]]  && echo "$1: not found"; exit 127
 # }
 
 # We'll have to live with this until something is done.
 case $1 in
-	(ls) docker container ls -a ;;
-	(create) docker container create -it --name $CNT -h $CNT $IMG $DEFAULTSHELL ;;
-	(fork) docker container exec -it $CNT $DEFAULTSHELL ;;
+	(ls) docker container ls -a;;
+	(create) docker container create -it --name $3 -h $3 ${2:-DEFAULTIMG} $DEFAULTSHELL;;
+	(fork) docker container exec -it $2 $DEFAULTSHELL;;
 	(*) echo "$1: not found"; exit 127;;
 esac
