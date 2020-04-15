@@ -7,10 +7,11 @@ CNT=${3:-env}
 
 REPOSITORY=$PREFIX/$USER_NAME/$IMG
 
-[[ $1 == pull ]] && \
-	docker image pull $REPOSITORY && \
-	docker tag $REPOSITORY $IMG && \
+[[ $1 == pull ]] && {
+	docker image pull $REPOSITORY
+	docker tag $REPOSITORY $IMG
 	docker image rm $REPOSITORY
+}
 [[ $1 == create ]] && docker container create -it --name $CNT -h $CNT $IMG $DEFAULTSHELL
 [[ $1 == start ]] && docker container start $CNT
 [[ $1 == attach ]] && docker container attach $CNT
