@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # docker/podman
-IMG=${2:-fedora:latest}
+IMG=${2:-$USER_NAME/fedora:latest}
 CNT=${3:-env}
 
 [[ $1 == create ]] && docker container create -it --name $CNT -h $CNT $IMG $DEFAULTSHELL
