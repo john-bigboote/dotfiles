@@ -1,20 +1,18 @@
 #!/bin/sh
 
 # docker/podman
-REGISTRY=registry.gitlab.com/$USER_NAME
+REGISTRY=docker.io/library
 DEFAULTIMG=$USER_NAME/fedora
 DEFAULTCNT=env
 
-IMG=${3:-$DEFAULTIMG}
-CNT=${4:-$DEFAULTCNT}
+IMG=${2:-$DEFAULTIMG}
+CNT=${3:-$DEFAULTCNT}
 
-[[ $1 == image ]] && {
-	[[ $2 == pull ]] && docker image pull $IMG
-	[[ $2 == rm ]] && docker image rm $IMG
-} || [[ $1 == container ]] && {
-	[[ $2 == create ]] && docker container create -it --name $CNT -h $CNT $IMG $DEFAULTSHELL
-	[[ $2 == start ]] && docker container start $CNT
-	[[ $2 == attach ]] && docker container attach $CNT
-	[[ $2 == add ]] && docker container exec -it $CNT $DEFAULTSHELL
-	[[ $2 == rm ]] && docker container rm $CNT
-}
+[[ $1 == pull ]] && \
+	docker image pull $IMG && \
+	docker tag $REGISTRY/$IMG $IMG && \
+	docker image rm $REGISTRY/$IMG
+[[ $1 == create ]] && docker container create -it --name $CNT -h $CNT $IMG $DEFAULTSHELL
+[[ $1 == start ]] && docker container start $CNT
+[[ $1 == attach ]] && docker container attach $CNT
+[[ $1 == add ]] && docker container exec -it $CNT $DEFAULTSHELL
