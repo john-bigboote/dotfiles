@@ -16,5 +16,5 @@ case $1 in
 	(ls) docker container ls -a ;;
 	(create) docker container create -it --name $CNT -h $CNT $IMG $DEFAULTSHELL ;;
 	(fork) docker container exec -it $CNT $DEFAULTSHELL ;;
-	(*) echo "podctl: subcommand not found"; exit -1;;
+	(*) echo "$0 $1: not found"; exit 127;;
 esac
