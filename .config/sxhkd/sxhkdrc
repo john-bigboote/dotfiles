@@ -42,10 +42,10 @@ ctrl + grave
 	rofi -show run
 
 super + space
-	xctl show Conky Polybar
+	xctl toggle Conky Polybar
 
-super + @space
-	xctl hide Conky Polybar
+# super + @space
+# 	xctl hide Conky Polybar
 
 # screenshot
 super + Print
