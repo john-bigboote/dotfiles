@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
 # docker/podman
 DEFAULTIMG=${2:-$USER_NAME/fedora:latest}
@@ -13,7 +13,7 @@ DEFAULTIMG=${2:-$USER_NAME/fedora:latest}
 
 # We'll have to live with this until something is done.
 case $1 in
-	(ls) docker container ls -a;;
+	(ls) docker image ls; docker container ls -a;;
 	(create) docker container create -it --name $3 -h $3 ${2:-DEFAULTIMG} $DEFAULTSHELL;;
 	(fork) docker container exec -it $2 $DEFAULTSHELL;;
 	(*) echo "$1: not found"; exit 127;;
