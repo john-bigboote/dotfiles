@@ -6,7 +6,7 @@ state=/tmp/state
 for process in ${@:1}; do 
 	case $1 in
 		(show) xdotool search --class $process windowmap %@ windowraise %@;;
-		(hide) xdotool search --onlyvisible --class $process windowunmap %@ windowraise %@;;
+		(hide) xdotool search --onlyvisible --class $process windowunmap %@;;
 		(*) break;;
 	esac
 done
