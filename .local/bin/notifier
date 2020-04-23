@@ -1,8 +1,12 @@
 #!/bin/sh
 
 # dunst
-killall dunst
-dunst &
+# killall dunst
+# dunst &
+
+# lxqt-notificationd
+killall lxqt-notificationd
+lxqt-notificationd &
 
 # test
 # notify-send testing
