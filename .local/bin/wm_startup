@@ -20,3 +20,6 @@ dock &
 
 # notifications
 notifier
+
+# default cursor
+xsetroot -cursor_name left_ptr

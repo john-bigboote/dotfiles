@@ -1,0 +1,9 @@
+[submodule ".local/share/fonts"]
+	path = .local/share/fonts
+	url = https://gitlab.com/altaway/dotfiles-fonts.git
+[submodule ".local/share/icons"]
+	path = .local/share/icons
+	url = https://gitlab.com/altaway/dotfiles-icons.git
+[submodule ".local/share/themes"]
+	path = .local/share/themes
+	url = https://gitlab.com/altaway/dotfiles-themes.git
