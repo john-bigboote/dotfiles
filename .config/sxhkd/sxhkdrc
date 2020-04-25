@@ -63,7 +63,7 @@ XF86MonBrightness{Up,Down}
 
 # sync configuration files
 super + shift + Return
-	dotsync
+	dotsync stow
 
 #
 # bspwm hotkeys
