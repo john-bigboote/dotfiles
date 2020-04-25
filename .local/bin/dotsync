@@ -6,6 +6,9 @@
 # notify-send "dotfiles copied from $DOTFILES to $HOME"
 
 pushd $DOTFILES
-stow -t ${1:-~} -R .
-notify-send "restowed"
+case $1 in
+    (stow) stow -t ~ -R . && notify-send "stowed";;
+    (unstow) stow -t ~ -D . && notify-send "unstowed";;
+    (*) break;;
+esac
 popd

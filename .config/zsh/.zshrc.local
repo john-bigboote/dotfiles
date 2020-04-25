@@ -15,6 +15,18 @@ export USER_EMAIL=${USER_NAME}@git
 export LOCAL_PATH=$HOME/.local/bin
 export PATH=$LOCAL_PATH:$PATH
 
+# stow/unstow dotfiles
+dotsync() {
+    local state=/tmp/state_stow
+    pushd ${2:-$DOTFILES}
+    case $1 in
+	(stow) stow -t ~ -R . && echo "stowed" > $state && notify-send -a dotsync "stowed";;
+	(unstow) stow -t ~ -D . && echo "unstowed" > $state && notify-send -a dotsync "unstowed";;
+	(*) break;;
+    esac
+    popd 
+}
+    
 # conda
 export PATH=$PATH:/opt/miniconda3/bin
 export TERMINFO=/usr/share/terminfo # helps with a few problems like the backspace of the python shell
@@ -114,7 +126,7 @@ minconfig() {
     git config credential.helper "store --file=$CONFIGDIR/credentials"
 }
 minpush() {
-	git commit -am "" --allow-empty-message && \
+    git commit -am "" --allow-empty-message && \
     git push origin `git rev-parse --abbrev-ref HEAD`
 }
 
