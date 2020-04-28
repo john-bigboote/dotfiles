@@ -105,7 +105,9 @@ alias os="neofetch distro --distro_shorthand tiny --os_arch off | sed \"s/distro
 betterfetch() {
 	OS=`os`
 	DIRPATH=$XDG_DATA_HOME/logos
-	FILENAME=`find $DIRPATH -type f -iname "*${1:-$OS}*" -printf "%f\n" | head -n 1`
+	pushd $DIRPATH
+	FILENAME=`find -type f -iname "*${1:-$OS}*" -printf "%f\n" | head -n 1`
+	popd
 	neofetch --chafa $DIRPATH/$FILENAME
 }
 
