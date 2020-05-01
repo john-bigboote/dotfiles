@@ -16,15 +16,16 @@ export LOCAL_PATH=$HOME/.local/bin
 export PATH=$LOCAL_PATH:$PATH
 
 # stow/unstow dotfiles
-dotsync() {
+dotmap() {
     local state=/tmp/state_stow
-    pushd ${2:-$DOTFILES}
+    local dir=${2:-$DOTFILES}
+    [[ `pwd` != $dir ]] && pushd $dir || true
     case $1 in
-	(stow) stow -t ~ -R . && echo "stowed" > $state && notify-send -a dotsync "stowed";;
-	(unstow) stow -t ~ -D . && echo "unstowed" > $state && notify-send -a dotsync "unstowed";;
+	(stow) stow -t ~ -R . && echo "stowed" > $state && notify-send -a $0 "stowed";;
+	(unstow) stow -t ~ -D . && echo "unstowed" > $state && notify-send -a $0 "unstowed";;
 	(*) break;;
     esac
-    popd 
+    [[ `pwd` != $dir ]] && popd || true
 }
     
 # conda
