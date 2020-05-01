@@ -1,0 +1,5 @@
+[user]
+	name = altaway
+	email = git@altaway.site
+[url "https://"]
+	insteadOf = git://

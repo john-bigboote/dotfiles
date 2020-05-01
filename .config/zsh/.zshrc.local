@@ -9,7 +9,7 @@ export DEFAULTSHELL=zsh
 
 # The user's name and email, put at the beginning of this file to be referenced later
 export USER_NAME=altaway
-export USER_EMAIL=${USER_NAME}@git
+export USER_EMAIL=git@altaway.site
 
 # local path (comes before path so we can override the original path if we have to)
 export LOCAL_PATH=$HOME/.local/bin
