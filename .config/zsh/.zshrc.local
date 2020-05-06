@@ -44,8 +44,11 @@ alias npm="npm -g"
 export SPARK_HOME=$XDG_DATA_HOME/spark-2.4.5-bin-hadoop2.7
 export PATH=$PATH:$SPARK_HOME/bin
 
-# rust
+# rust (rustup)
 export PATH=$PATH:$HOME/.cargo/bin
+
+# haskell (ghcup)
+export PATH=$PATH:$HOME/.cabal/bin:$HOME/.ghcup/bin
 
 # fileserver
 alias fileserver="sudo bftpd -D -c $XDG_CONFIG_HOME/common/bftpd.conf"
