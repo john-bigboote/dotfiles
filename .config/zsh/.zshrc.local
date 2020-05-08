@@ -29,10 +29,9 @@ dotmap() {
 }
     
 # conda
-export PATH=/opt/miniconda3/bin:$PATH
 export TERMINFO=/usr/share/terminfo # helps with a few problems like the backspace of the python shell
-. <(conda shell.zsh hook)
-alias condactl="conda config --file $XDG_CONFIG_HOME/conda/condarc"
+. <(/opt/miniconda3/bin/conda shell.zsh hook)
+alias condactl="conda config --file $XDG_CONFIG_HOME/conda/condarc" # why did I do this?
 
 # npm
 export NPM_CONFIG_PREFIX=$HOME/.local # not $XDG_DATA_HOME which is $HOME/.local/share
@@ -41,14 +40,15 @@ export PATH=$NPM_CONFIG_PREFIX/bin:$PATH
 alias npm="npm -g"
 
 # spark
-export SPARK_HOME=$XDG_DATA_HOME/spark-2.4.5-bin-hadoop2.7
+export SPARK_HOME=$HOME/.spark
 export PATH=$SPARK_HOME/bin:$PATH
 
 # rust (rustup)
 export PATH=$HOME/.cargo/bin:$PATH
 
 # go - prone to deprecation (stereotyping languages designed at google)
-export PATH=$HOME/.local/go/bin:$PATH
+export GOPATH=$HOME/.go
+export PATH=$GOPATH/bin:$PATH
 
 # haskell (ghcup)
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
