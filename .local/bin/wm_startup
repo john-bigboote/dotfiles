@@ -15,5 +15,8 @@ dock &
 # notifications
 notifier
 
+# networkmanager
+nm-applet &
+
 # default cursor
 xsetroot -cursor_name left_ptr
