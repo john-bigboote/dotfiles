@@ -22,13 +22,15 @@ export PATH=$LOCAL_PATH:$PATH
 dotmap() {
     local state=/tmp/state_stow
     local dir=${2:-$DOTFILES}
-    [[ `pwd` != $dir ]] && pushd $dir || true
+    local pwd=`pwd`
+    [[ $pwd != $dir ]] && pushd $dir
     case $1 in
 	(stow) stow -t ~ -R . && echo "stowed" > $state && notify-send -a $0 "stowed";;
 	(unstow) stow -t ~ -D . && echo "unstowed" > $state && notify-send -a $0 "unstowed";;
 	(*) break;;
     esac
-    [[ `pwd` != $dir ]] && popd || true
+    [[ $pwd != $dir ]] && popd
+    true
 }
     
 # conda
