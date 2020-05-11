@@ -143,7 +143,7 @@ minconfig() {
     git config credential.helper "store --file=$CONFIGDIR/credentials"
 }
 minpush() {
-    git commit -am "" --allow-empty-message && \
+    git commit -am "" --allow-empty-message
     git push -f origin `git rev-parse --abbrev-ref HEAD`
 }
 
