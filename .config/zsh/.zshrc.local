@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # dotfiles
-export DOTFILES=~/other/dotfiles
+export DOTFILES=$HOME/other/dotfiles
 export DOTFILES_CONFIG_HOME=$DOTFILES/.config
 export DOTFILES_DATA_HOME=$DOTFILES/.local/share
 
@@ -144,7 +144,7 @@ minconfig() {
 }
 minpush() {
     git commit -am "" --allow-empty-message && \
-    git push origin `git rev-parse --abbrev-ref HEAD`
+    git push -f origin `git rev-parse --abbrev-ref HEAD`
 }
 
 # query time
