@@ -49,7 +49,7 @@ super + space
 
 # screenshot
 super + Print
-	deepin-screenshot -s ~/Pictures/screenshots/
+	deepin-screen-recorder -s ~/Pictures/screenshots/
 
 # audio
 XF86Audio{RaiseVolume,LowerVolume}
