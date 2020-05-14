@@ -7,7 +7,7 @@
 
 # mount, change root or unmount, given the partlabel, using the above functions
 [[ $1 == mount ]] && udisksctl mount -b `utilctl device $2`
-[[ $1 == chroot ]] && sudo chroot `utilctl mountpoint $2`
+[[ $1 == chroot ]] && doas chroot `utilctl mountpoint $2` ${3:-/bin/sh}
 [[ $1 == unmount ]] && udisksctl unmount -b `utilctl device $2`
 
 exit 0
