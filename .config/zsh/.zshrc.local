@@ -64,11 +64,11 @@ alias fileserver="doas bftpd -D -c $XDG_CONFIG_HOME/common/bftpd.conf"
 # IITB openvpn
 IITBVPN_HOME="$XDG_CONFIG_HOME/common/iitbvpn"
 iitbvpn() {
-    sudo openvpn \
+    doas openvpn \
         --config $IITBVPN_HOME/iitbvpn.conf \
         --up $IITBVPN_HOME/client.up \
         --down $IITBVPN_HOME/client.down \
-        --auth-user-pass $IITBVPN_HOME/pass
+        --auth-user-pass $IITBVPN_HOME/login.conf
 }
 
 # battery
@@ -81,7 +81,7 @@ alias path='print $PATH | sed s/:/\\n/g'
 export MARSUSER=tarunist
 export MARSCLASS=ug16
 alias mars.login="ssh $MARSUSER@mars.cse.iitb.ac.in"
-alias mars.mount="sudo sshfs $MARSUSER@mars.cse.iitb.ac.in:/users/$MARSCLASS/$MARSUSER /mnt"
+alias mars.mount="doas sshfs $MARSUSER@mars.cse.iitb.ac.in:/users/$MARSCLASS/$MARSUSER /mnt"
 
 # terminal, I don't remember why I put this
 # export TERMINAL="alacritty"
@@ -91,14 +91,14 @@ export pool=barbatos
 export fs=$pool/$pool
 export device=/dev/sda1
 export mountpoint=/home/user/other/$pool
-alias zchown="sudo chown -R $USER:$USER $mountpoint"
+alias zchown="doas chown -R $USER:$USER $mountpoint"
 zcreatepool() {
-    sudo zpool create -f -m $mountpoint -o ashift=12 $pool $device
-    sudo zfs set canmount=noauto $pool
-    sudo zfs unmount $pool
+    doas zpool create -f -m $mountpoint -o ashift=12 $pool $device
+    doas zfs set canmount=noauto $pool
+    doas zfs unmount $pool
 }
 zcreatefs() {
-    sudo zfs create \
+    doas zfs create \
         -o mountpoint=$mountpoint \
         -o canmount=noauto \
         -o encryption=on \
@@ -107,10 +107,10 @@ zcreatefs() {
 }
 zmake() {
     zcreatepool
-    sudo zfs mount $pool
+    doas zfs mount $pool
     zchown
 }
-alias zdestroy="sudo zpool destroy $pool"
+alias zdestroy="doas zpool destroy $pool"
 
 # aosp
 export LC_ALL=C
