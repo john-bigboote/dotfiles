@@ -44,6 +44,10 @@ export NODE_PATH=$NPM_CONFIG_PREFIX/lib/node_modules
 export PATH=$NPM_CONFIG_PREFIX/bin:$PATH
 alias npm="npm -g"
 
+# deno
+export DENO_INSTALL=$HOME/.deno
+export PATH=$DENO_INSTALL/bin:$PATH
+
 # spark
 export SPARK_HOME=$HOME/.spark
 export PATH=$SPARK_HOME/bin:$PATH
