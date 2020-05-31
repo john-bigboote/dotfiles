@@ -68,7 +68,7 @@ configuration                   {
     selected-urgent-foreground: @background-alt;
 
     background-color: transparent;
-    background: #383C4Ad8;
+    background: #303C6AD0;
     foreground: #FDF6E3;
     background-alt: #5294E2;
     border-color: @background;
