@@ -63,7 +63,7 @@ configuration                   {
     selected-active-background: @background-alt;
     selected-active-foreground: @background;
     selected-normal-background: @foreground;
-    selected-normal-foreground: @background;
+    selected-normal-foreground: #111144FF;
     selected-urgent-background: @foreground;
     selected-urgent-foreground: @background-alt;
 
