@@ -62,6 +62,9 @@ export PATH=$GOPATH/bin:$PATH
 # haskell (ghcup)
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
 
+# doom
+export PATH=$HOME/.emacs.d/bin:$PATH
+
 # fileserver
 alias fileserver="doas bftpd -D -c $XDG_CONFIG_HOME/common/bftpd.conf"
 
