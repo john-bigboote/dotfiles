@@ -1,0 +1,5 @@
+{
+    "window.menuBarVisibility": "toggle",
+    "editor.fontFamily": "'Fira Code', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontLigatures": true
+}
