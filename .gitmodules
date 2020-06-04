@@ -10,3 +10,4 @@
 [submodule ".emacs.d"]
 	path = .emacs.d
 	url = https://gitlab.com/altaway/emacs-d
+	branch = develop
