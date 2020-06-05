@@ -35,7 +35,11 @@ dotmap() {
     
 # conda
 export TERMINFO=/usr/share/terminfo # helps with a few problems like the backspace of the python shell
-command -v conda || alias conda-activate="[ -d $HOME/.conda ] && . <($HOME/.conda/bin/conda shell.zsh hook)" # taken from the install script
+command -v conda || alias activate-conda="[ -d $HOME/.conda ] && . <($HOME/.conda/bin/conda shell.zsh hook)" # taken from the install script
+
+# venv (python3)
+export VENV_HOME="$HOME/.venv"
+command -v pip || alias activate-venv=". $VENV_HOME/bin/activate"
 
 # npm
 export NPM_CONFIG_PREFIX=$HOME/.local # not $XDG_DATA_HOME which is $HOME/.local/share
@@ -61,7 +65,7 @@ export PATH=$GOPATH/bin:$PATH
 # haskell (ghcup)
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
 
-# doom
+# doom (emacs)
 export EMACS=remacs
 export PATH=$HOME/.emacs.d/bin:$PATH
 
