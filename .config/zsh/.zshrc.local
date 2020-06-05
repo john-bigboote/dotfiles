@@ -35,11 +35,11 @@ dotmap() {
     
 # conda
 export TERMINFO=/usr/share/terminfo # helps with a few problems like the backspace of the python shell
-command -v conda || alias activate-conda="[ -d $HOME/.conda ] && . <($HOME/.conda/bin/conda shell.zsh hook)" # taken from the install script
+alias activate-conda="[ -d $HOME/.conda ] && . <($HOME/.conda/bin/conda shell.zsh hook)" # taken from the install script
 
 # venv (python3)
 export VENV_HOME="$HOME/.venv"
-command -v pip || alias activate-venv=". $VENV_HOME/bin/activate"
+alias activate-venv=". $VENV_HOME/bin/activate"
 
 # npm
 export NPM_CONFIG_PREFIX=$HOME/.local # not $XDG_DATA_HOME which is $HOME/.local/share
