@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # This file serves as a global variable value holder showing if the windows are mapped or not.
-state=/tmp/state
+state=/tmp/state_dock
 
 for process in ${@:1}; do 
 	case $1 in
