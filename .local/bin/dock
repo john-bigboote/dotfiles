@@ -8,6 +8,15 @@ dock="polybar lxqt-panel conky"
     polybar example & lxqt-panel & conky
     sleep 1
     xctl hide $dock
+} || [[ $1 == toggle ]] && {
+    # all the windows belonging to the dock must share the same state
+    for process in $dock; do
+        case `cat /tmp/xctl/$process` in
+            (visible) xctl hide $dock;;
+            (hidden) xctl show $dock;;
+        esac
+        break
+    done
 } || {
     xctl $1 $dock
 }
