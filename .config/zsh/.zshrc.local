@@ -34,12 +34,12 @@ dotmap() {
 }
     
 # conda
-export TERMINFO=/usr/share/terminfo # helps with a few problems like the backspace of the python shell
 alias activate-conda="[ -d $HOME/.conda ] && . <($HOME/.conda/bin/conda shell.zsh hook)" # taken from the install script
 
-# venv (python3)
-export VENV_HOME="$HOME/.venv"
-alias activate-venv=". $VENV_HOME/bin/activate"
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+command -v pyenv 1>/dev/null 2>&1 && eval "$(pyenv init -)"
 
 # npm
 export NPM_CONFIG_PREFIX=$HOME/.local # not $XDG_DATA_HOME which is $HOME/.local/share
@@ -94,8 +94,9 @@ export MARSCLASS=ug16
 alias mars.login="ssh $MARSUSER@mars.cse.iitb.ac.in"
 alias mars.mount="doas sshfs $MARSUSER@mars.cse.iitb.ac.in:/users/$MARSCLASS/$MARSUSER /mnt"
 
-# terminal, I don't remember why I put this
-# export TERMINAL="alacritty"
+# terminal
+export TERMINFO=/usr/share/terminfo # helps with a few problems like the backspace of the python shell
+# export TERMINAL="alacritty" # I don't remember why this is here
 
 # zfs
 export pool=barbatos
