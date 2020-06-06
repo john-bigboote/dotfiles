@@ -1,9 +1,13 @@
 #!/bin/sh
 
-killall polybar lxqt-panel conky
-sleep 1
-polybar example 1>/dev/null 2>/dev/null & 
-lxqt-panel 1>/dev/null 2/dev/null &
-conky
-sleep 1
-xctl hide polybar lxqt-panel conky
+dock="polybar lxqt-panel conky"
+
+[[ -z $1 ]] && {
+    killall polybar lxqt-panel conky
+    sleep 1
+    polybar example & lxqt-panel & conky
+    sleep 1
+    xctl hide $dock
+} || {
+    xctl $1 $dock
+}

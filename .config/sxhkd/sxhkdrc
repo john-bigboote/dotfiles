@@ -42,10 +42,7 @@ ctrl + grave
 	rofi -show run
 
 super + space
-	xctl toggle polybar lxqt-panel conky
-
-# super + @space
-# 	xctl hide Conky Polybar
+	dock toggle
 
 # screenshot
 super + Print
