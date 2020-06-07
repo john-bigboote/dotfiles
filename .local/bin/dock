@@ -3,11 +3,12 @@
 dock="polybar lxqt-panel conky"
 
 [[ -z $1 ]] && {
-    killall polybar lxqt-panel conky
+    killall $dock
     sleep 1
     polybar example & lxqt-panel & conky
     sleep 1
     xctl hide $dock
+    exit 0
 } || [[ $1 == toggle ]] && {
     # all the windows belonging to the dock must share the same state
     for process in $dock; do
