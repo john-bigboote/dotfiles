@@ -17,21 +17,6 @@ export USER_EMAIL=git@altaway.uk
 # local path (precedence over system-wide path)
 export LOCAL_PATH=$HOME/.local/bin
 export PATH=$LOCAL_PATH:$PATH
-
-# stow/unstow dotfiles
-dotmap() {
-    local state=/tmp/state_stow
-    local dir=${2:-$DOTFILES}
-    local pwd=`pwd`
-    [[ $pwd != $dir ]] && pushd $dir
-    case $1 in
-	(stow) stow -t ~ -R . && echo "stowed" > $state && notify-send -a $0 "stowed";;
-	(unstow) stow -t ~ -D . && echo "unstowed" > $state && notify-send -a $0 "unstowed";;
-	(*) break;;
-    esac
-    [[ $pwd != $dir ]] && popd
-    true
-}
     
 # conda
 alias activate-conda="[ -d $HOME/.conda ] && . <($HOME/.conda/bin/conda shell.zsh hook)" # taken from the install script
@@ -73,13 +58,13 @@ export PATH=$HOME/.emacs.d/bin:$PATH
 alias fileserver="doas bftpd -D -c $XDG_CONFIG_HOME/common/bftpd.conf"
 
 # IITB openvpn
-IITBVPN_HOME="$XDG_CONFIG_HOME/common/iitbvpn"
+IITBVPN="$XDG_CONFIG_HOME/common/iitbvpn"
 iitbvpn() {
     doas openvpn \
-        --config $IITBVPN_HOME/iitbvpn.conf \
-        --up $IITBVPN_HOME/client.up \
-        --down $IITBVPN_HOME/client.down \
-        --auth-user-pass $IITBVPN_HOME/login.conf
+        --config $IITBVPN/iitbvpn.conf \
+        --up $IITBVPN/client.up \
+        --down $IITBVPN/client.down \
+        --auth-user-pass $IITBVPN/login.conf
 }
 
 # battery
