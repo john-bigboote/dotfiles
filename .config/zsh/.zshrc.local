@@ -57,7 +57,7 @@ export PATH=$HOME/.emacs.d/bin:$PATH
 # fileserver
 alias fileserver="doas bftpd -D -c $XDG_CONFIG_HOME/common/bftpd.conf"
 
-# IITB openvpn
+# IITB related
 IITBVPN="$XDG_CONFIG_HOME/common/iitbvpn"
 iitbvpn() {
     doas openvpn \
@@ -66,18 +66,16 @@ iitbvpn() {
         --down $IITBVPN/client.down \
         --auth-user-pass $IITBVPN/login.conf
 }
+export MARSUSER=tarunist
+export MARSCLASS=ug16
+alias mars.login="ssh $MARSUSER@mars.cse.iitb.ac.in"
+alias mars.mount="doas sshfs $MARSUSER@mars.cse.iitb.ac.in:/users/$MARSCLASS/$MARSUSER /mnt"
 
 # battery
 alias battery="more /sys/class/power_supply/BAT0/capacity"
 
 # path (just learnt to put alias definitions like this one in single quotes so that I can put the exact command without having to insert escape slashes and other headburns every single time)
 alias path='print $PATH | sed s/:/\\n/g'
-
-# mars.cse.iitb.ac.in
-export MARSUSER=tarunist
-export MARSCLASS=ug16
-alias mars.login="ssh $MARSUSER@mars.cse.iitb.ac.in"
-alias mars.mount="doas sshfs $MARSUSER@mars.cse.iitb.ac.in:/users/$MARSCLASS/$MARSUSER /mnt"
 
 # terminal
 export TERMINFO=/usr/share/terminfo # helps with a few problems like the backspace of the python shell
