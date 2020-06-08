@@ -138,22 +138,17 @@ betterfetch() {
 	neofetch --chafa $DIRPATH/$FILENAME
 }
 
-# git minimal
+# git
+GIT_CONFIG_DIR=$XDG_CONFIG_HOME/git
+git config -f $GIT_CONFIG_DIR/config alias.root 'rev-parse --show-toplevel'
 minconfig() {
-    CONFIG=${1:-global}
-    case $CONFIG in
-        global)
-        CONFIGDIR=$XDG_CONFIG_HOME/git
-        ;;
-        local)
-        CONFIGDIR=.git
-        ;;
-    esac
-    git config -f $CONFIGDIR/config user.name $USER_NAME && \
-    git config -f $CONFIGDIR/config user.email $USER_EMAIL && \
-    git config -f $CONFIGDIR/config url.https://.insteadOf git://
-    git config credential.helper "store --file=$CONFIGDIR/credentials"
+    [[ $1 == local ]] && GIT_CONFIG_DIR=`git root`/.git
+    git config -f $GIT_CONFIG_DIR/config user.name $USER_NAME
+    git config -f $GIT_CONFIG_DIR/config user.email $USER_EMAIL
+    git config -f $GIT_CONFIG_DIR/config url.https://.insteadOf git://
+    git config -f $GIT_CONFIG_DIR/config credential.helper "store --file=$GIT_CONFIG_DIR/credentials"
 }
+minconfig global
 minpush() {
 	local branch=`git rev-parse --abbrev-ref HEAD`
     git commit -am "" --allow-empty-message

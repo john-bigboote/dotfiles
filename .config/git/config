@@ -3,3 +3,7 @@
 	email = git@altaway.uk
 [url "https://"]
 	insteadOf = git://
+[alias]
+	root = rev-parse --show-toplevel
+[credential]
+	helper = store --file=/home/user/.config/git/credentials
