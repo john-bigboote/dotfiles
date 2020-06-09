@@ -1,9 +1,0 @@
-#!/usr/bin/env zsh
-
-tray="nm-applet lxqt-powermanagement lxqt-notificationd"
-
-killall $tray
-
-for process in $tray; do
-    process &
-done

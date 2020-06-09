@@ -3,19 +3,22 @@
 dock="lxqt-panel conky"
 
 [[ -z $1 ]] && {
-    killall $dock
-    sleep 1
-    # polybar example & 
-    lxqt-panel & conky
-    sleep 1
-    xctl hide $dock
+    # (
+    #     killall polybar
+    #     sleep 1
+    #     polybar example &
+    # ) &
+    respawn lxqt-panel &
+    respawn conky &
+    sleep 2
+    dock hide
     exit 0
 } || [[ $1 == toggle ]] && {
     # all the windows belonging to the dock must share the same state
     for process in $dock; do
         case `cat /tmp/xctl/$process` in
-            (visible) xctl hide $dock;;
-            (hidden) xctl show $dock;;
+            (visible) dock hide;;
+            (hidden) dock show;;
         esac
         break
     done

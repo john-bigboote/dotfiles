@@ -1,0 +1,5 @@
+#!/bin/sh
+
+killall $1
+sleep 1
+$1 &

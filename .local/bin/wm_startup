@@ -1,10 +1,14 @@
 #!/bin/sh
 
-hotkey-map
 wallpaper
-compositor
-dock
-tray
+respawn sxhkd &
+respawn picom &
+dock &
+
+# tray
+respawn nm-applet &
+respawn lxqt-notificationd &
+respawn lxqt-powermanagement &
 
 # default cursor
 xsetroot -cursor_name left_ptr
