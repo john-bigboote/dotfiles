@@ -133,6 +133,10 @@ minpush() {
     git commit -am "" --allow-empty-message
     git push -f origin $branch
 }
+minclean() {
+    git reset --hard
+    git clean -df
+}
 
 # query time
 alias today="date +%F_%a"
