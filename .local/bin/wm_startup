@@ -1,22 +1,10 @@
 #!/bin/sh
 
-# hotkey mapper
 hotkey-map
-
-# wallpaper
 wallpaper
-
-# compositor
 compositor
-
-# dock
-dock &
-
-# notifications
-notifier
-
-# networkmanager
-nm-applet &
+dock
+tray
 
 # default cursor
 xsetroot -cursor_name left_ptr

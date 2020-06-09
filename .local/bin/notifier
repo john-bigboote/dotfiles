@@ -1,9 +1,0 @@
-#!/bin/sh
-
-# lxqt-notificationd
-killall lxqt-notificationd
-lxqt-notificationd &
-
-# test
-# notify-send testing
-# notify-send "testing again"

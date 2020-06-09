@@ -1,11 +1,12 @@
 #!/bin/sh
 
-dock="polybar lxqt-panel conky"
+dock="lxqt-panel conky"
 
 [[ -z $1 ]] && {
     killall $dock
     sleep 1
-    polybar example & lxqt-panel & conky
+    # polybar example & 
+    lxqt-panel & conky
     sleep 1
     xctl hide $dock
     exit 0
