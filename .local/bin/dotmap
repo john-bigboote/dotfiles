@@ -2,7 +2,7 @@
 
 # stow/unstow dotfiles
 # DO NOT RELY on the shell to define the necessary variables. When the dotfiles are unstowed, all the shells started afterwards lose access to the variables defined in the RC files.
-[[ -z $DOTFILES ]] && print "Variable DOTFILES not set" && exit 5
+[[ -z $DOTFILES ]] && print "shell variable DOTFILES not set" && exit 5
 print "DOTFILES: $DOTFILES"
 state=/tmp/state_stow
 pwd=`pwd`

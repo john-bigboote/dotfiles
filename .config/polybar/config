@@ -260,10 +260,10 @@ card = intel_backlight
 
 [module/date]
 type = internal/date
-interval = 1
+interval = 10
 
 date = "%F_%a"
-time = %T
+time = %H:%M
 label = %date% %time%
 
 [module/volume]
