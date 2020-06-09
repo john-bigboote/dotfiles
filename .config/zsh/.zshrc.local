@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # dotfiles
-export DOTFILES=$HOME/other/dotfiles
+export DOTFILES=$HOME/.dotfiles
 export DOTFILES_CONFIG_HOME=$DOTFILES/.config
 export DOTFILES_DATA_HOME=$DOTFILES/.local/share
 

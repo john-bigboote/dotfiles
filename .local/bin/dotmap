@@ -2,7 +2,7 @@
 
 # stow/unstow dotfiles
 # MAKE SURE ALL THE VARIABLES HERE ARE DEFINED. When the dotfiles are unstowed, the shell loses access to the variables defined in its RC files.
-DOTFILES=${${2:-$DOTFILES}:-$HOME/other/dotfiles}
+DOTFILES=${${2:-$DOTFILES}:-$HOME/.dotfiles}
 print "DOTFILES: $DOTFILES"
 [[ -z $DOTFILES ]] && print "No directory at $DOTFILES" && exit 5
 state=/tmp/state_stow
