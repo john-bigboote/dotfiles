@@ -1,10 +1,9 @@
 #!/usr/bin/env zsh
 
 # stow/unstow dotfiles
-# MAKE SURE ALL THE VARIABLES HERE ARE DEFINED. When the dotfiles are unstowed, the shell loses access to the variables defined in its RC files.
-DOTFILES=${${2:-$DOTFILES}:-$HOME/.dotfiles}
+# DO NOT RELY on the shell to define the necessary variables. When the dotfiles are unstowed, all the shells started afterwards lose access to the variables defined in the RC files.
+[[ -z $DOTFILES ]] && print "Variable DOTFILES not set" && exit 5
 print "DOTFILES: $DOTFILES"
-[[ -z $DOTFILES ]] && print "No directory at $DOTFILES" && exit 5
 state=/tmp/state_stow
 pwd=`pwd`
 [[ $pwd != $DOTFILES ]] && pushd $DOTFILES
