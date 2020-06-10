@@ -4,7 +4,7 @@
 # DO NOT RELY on the shell to define the necessary variables. When the dotfiles are unstowed, all the shells started afterwards lose access to the variables defined in the RC files.
 [[ -z $DOTFILES ]] && print "shell variable DOTFILES not set" && exit 5
 print "DOTFILES: $DOTFILES"
-state=/tmp/state_stow
+state=/tmp/dotfiles_`whoami`
 pwd=`pwd`
 [[ $pwd != $DOTFILES ]] && pushd $DOTFILES
 case $1 in
