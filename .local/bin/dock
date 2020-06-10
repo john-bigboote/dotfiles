@@ -1,13 +1,9 @@
 #!/bin/sh
 
-dock="lxqt-panel conky"
+dock="polybar lxqt-panel conky"
 
 [[ -z $1 ]] && {
-    # (
-    #     killall polybar
-    #     sleep 1
-    #     polybar example &
-    # ) &
+    respawn polybar example &
     respawn lxqt-panel &
     respawn conky &
     sleep 2
