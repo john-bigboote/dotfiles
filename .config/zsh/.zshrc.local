@@ -47,7 +47,7 @@ export PATH=$GOPATH/bin:$PATH
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
 
 # doom (emacs)
-export EMACS=remacs
+export EMACS=emacs
 export PATH=$HOME/.emacs.d/bin:$PATH
 
 # fileserver
@@ -75,7 +75,7 @@ alias path='print $PATH | sed s/:/\\n/g'
 
 # terminal
 export TERMINFO=/usr/share/terminfo # helps with a few problems like the backspace of the python shell
-# export TERMINAL="alacritty" # I don't remember why this is here
+alias sensible-terminal="alacritty"
 
 # zfs
 export pool=barbatos
