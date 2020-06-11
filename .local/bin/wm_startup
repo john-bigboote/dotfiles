@@ -8,7 +8,8 @@ dock &
 # tray
 respawn nm-applet &
 respawn lxqt-notificationd &
-respawn lxqt-powermanagement &
+# respawn lxqt-powermanagement &
+respawn cbatticon &
 
 # default cursor
 xsetroot -cursor_name left_ptr
