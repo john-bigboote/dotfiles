@@ -109,7 +109,7 @@ export LC_ALL=C
 # neofetch
 alias os="neofetch distro --distro_shorthand tiny --os_arch off | sed \"s/distro: //\" | sed \"s/ *$//\""
 betterfetch() {
-	OS=`os`
+	OS=`sed "s/ //g" <(os)`
 	DIRPATH=$XDG_DATA_HOME/logos
 	pushd $DIRPATH
 	FILENAME=`find -type f -iname "*${1:-$OS}*" -printf "%f\n" | head -n 1`
