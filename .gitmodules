@@ -7,10 +7,6 @@
 [submodule ".local/share/themes"]
 	path = .local/share/themes
 	url = https://gitlab.com/altaway/dotfiles-themes.git
-[submodule ".emacs.d"]
-	path = .emacs.d
-	url = https://gitlab.com/altaway/emacs-d
-	branch = develop
 [submodule ".emacs.d/undo-tree"]
 	path = .emacs.d/undo-tree
 	url = https://gitlab.com/altaway/undo-tree.git
