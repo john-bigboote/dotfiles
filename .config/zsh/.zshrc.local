@@ -39,6 +39,9 @@ export PATH=$SPARK_HOME/bin:$PATH
 # rust (rustup)
 export PATH=$HOME/.cargo/bin:$PATH
 
+# nim
+export PATH=$HOME/.nimble/bin:$PATH
+
 # go - prone to deprecation (stereotyping languages designed at google)
 export GOROOT=$HOME/.go
 export GOPATH=$HOME/.gopath
@@ -48,8 +51,8 @@ export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
 
 # doom (emacs)
-export EMACS=emacs
-export PATH=$HOME/.emacs.d/bin:$PATH
+# export EMACS=emacs
+# export PATH=$HOME/.emacs.d/bin:$PATH
 
 # fileserver
 alias fileserver="doas bftpd -D -c $XDG_CONFIG_HOME/common/bftpd.conf"
