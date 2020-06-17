@@ -16,3 +16,6 @@
 [submodule ".emacs.d/evil"]
 	path = .emacs.d/evil
 	url = https://gitlab.com/altaway/evil.git
+[submodule ".emacs.d"]
+	path = .emacs.d
+	url = ./.emacs.d

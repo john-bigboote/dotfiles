@@ -133,7 +133,7 @@ minconfig() {
 }
 minconfig global
 minpush() {
-	local branch=`git rev-parse --abbrev-ref HEAD`
+    local branch=`git rev-parse --abbrev-ref HEAD`
     git commit -am "" --allow-empty-message
     git push -f origin $branch
 }
