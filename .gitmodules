@@ -18,4 +18,4 @@
 	url = https://gitlab.com/altaway/evil.git
 [submodule ".emacs.d"]
 	path = .emacs.d
-	url = ./.emacs.d
+	url = https://gitlab.com/altaway/emacs-d.git
