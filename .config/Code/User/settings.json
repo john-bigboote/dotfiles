@@ -1,4 +1,5 @@
 {
     "window.menuBarVisibility": "toggle",
-    "editor.fontFamily": "'Noto Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'"
+    "editor.fontFamily": "'Noto Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "workbench.panel.defaultLocation": "right"
 }
