@@ -129,6 +129,7 @@ minconfig() {
     git config -f $GIT_CONFIG_DIR/config user.name $USER_NAME
     git config -f $GIT_CONFIG_DIR/config user.email $USER_EMAIL
     git config -f $GIT_CONFIG_DIR/config url.https://.insteadOf git://
+    git config -f $GIT_CONFIG_DIR/config pull.ff only 
     git config -f $GIT_CONFIG_DIR/config credential.helper "store --file=$GIT_CONFIG_DIR/credentials"
 }
 minconfig global
