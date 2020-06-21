@@ -68,7 +68,7 @@ super + shift + Return
 
 # quit/restart bspwm and sxhkd
 super + shift + {q,r}
-	bspc {quit,wm -r && pkill -USR1 -x sxhkd}
+	bspc {quit && killall -s KILL lxqt-panel,wm -r && pkill -USR1 -x sxhkd}
 
 # close and kill
 # super + {_,shift + }w
