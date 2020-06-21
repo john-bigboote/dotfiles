@@ -10,6 +10,7 @@ respawn nm-applet &
 respawn lxqt-notificationd &
 # respawn lxqt-powermanagement &
 respawn cbatticon &
+respawn blueman-applet &
 
 # default cursor
 xsetroot -cursor_name left_ptr

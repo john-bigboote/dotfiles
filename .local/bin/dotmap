@@ -6,11 +6,11 @@
 print "DOTFILES: $DOTFILES"
 state=/tmp/dotfiles_`whoami`
 pwd=`pwd`
-[[ $pwd != $DOTFILES ]] && pushd $DOTFILES
+[[ $pwd != $DOTFILES ]] && pushd $DOTFILES > /dev/null
 case $1 in
     (stow) stow -t ~ -R . && echo "stowed" > $state;;
     (unstow) stow -t ~ -D . && echo "unstowed" > $state;;
     (*) break;;
 esac
-[[ $pwd != $DOTFILES ]] && popd
+[[ $pwd != $DOTFILES ]] && popd > /dev/null
 true
