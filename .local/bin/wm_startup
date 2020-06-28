@@ -8,8 +8,8 @@ dock &
 # tray
 respawn nm-applet &
 respawn lxqt-notificationd &
-# respawn lxqt-powermanagement &
-respawn cbatticon &
+respawn lxqt-powermanagement &
+# respawn cbatticon &
 respawn blueman-applet &
 
 # default cursor
